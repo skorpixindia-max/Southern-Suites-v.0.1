@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from 'next'
 import { Playfair_Display, Inter } from 'next/font/google'
 import './globals.css'
+import Navbar from '@/components/ui/Navbar'
+import Footer from '@/components/ui/Footer'
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -122,9 +124,13 @@ export default function RootLayout({
           Skip to main content
         </a>
 
+        <Navbar />
+
         <main id="main-content">
           {children}
         </main>
+
+        <Footer />
       </body>
     </html>
   )
