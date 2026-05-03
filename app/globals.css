@@ -1,0 +1,349 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   CSS CUSTOM PROPERTIES
+   ============================================================ */
+:root {
+  --font-playfair: 'Playfair Display', Georgia, serif;
+  --font-inter: 'Inter', system-ui, sans-serif;
+
+  --color-primary:    #1B2A4A;
+  --color-accent:     #C9A84C;
+  --color-background: #FFFFFF;
+  --color-section:    #F8F7F4;
+
+  --navbar-height: 4.5rem;
+  --transition-luxury: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    tab-size: 4;
+  }
+
+  body {
+    font-family: var(--font-inter);
+    background-color: var(--color-background);
+    color: #292524;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-playfair);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--color-primary);
+  }
+
+  /* Smooth image rendering */
+  img {
+    image-rendering: -webkit-optimize-contrast;
+  }
+
+  /* Better focus styles */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f5f5f4;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #c9a84c;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #a98936;
+  }
+}
+
+/* ============================================================
+   COMPONENT UTILITIES
+   ============================================================ */
+@layer components {
+
+  /* Typography */
+  .heading-display {
+    @apply font-playfair text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-tight tracking-tight;
+  }
+
+  .heading-xl {
+    @apply font-playfair text-3xl md:text-4xl font-bold text-primary;
+  }
+
+  .heading-lg {
+    @apply font-playfair text-2xl md:text-3xl font-semibold text-primary;
+  }
+
+  .heading-md {
+    @apply font-playfair text-xl md:text-2xl font-semibold text-primary;
+  }
+
+  .heading-sm {
+    @apply font-playfair text-lg font-semibold text-primary;
+  }
+
+  .body-lg {
+    @apply font-inter text-base md:text-lg text-neutral-600 leading-relaxed;
+  }
+
+  .body-md {
+    @apply font-inter text-sm md:text-base text-neutral-600 leading-relaxed;
+  }
+
+  .label-gold {
+    @apply font-inter text-xs font-semibold tracking-widest uppercase text-accent;
+  }
+
+  /* Gold divider line */
+  .gold-line {
+    @apply w-16 h-0.5 bg-accent my-4;
+  }
+
+  .gold-line-center {
+    @apply w-16 h-0.5 bg-accent mx-auto my-4;
+  }
+
+  /* Buttons */
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 
+           px-6 py-3 
+           bg-accent text-primary 
+           font-inter font-semibold text-sm tracking-wide
+           rounded-sm
+           transition-all duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]
+           hover:bg-accent-600 hover:shadow-gold hover:-translate-y-0.5
+           focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2
+           active:translate-y-0 active:shadow-none
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0;
+  }
+
+  .btn-gold-outline {
+    @apply inline-flex items-center justify-center gap-2
+           px-6 py-3
+           bg-transparent text-accent
+           border border-accent
+           font-inter font-semibold text-sm tracking-wide
+           rounded-sm
+           transition-all duration-300
+           hover:bg-accent hover:text-primary hover:shadow-gold hover:-translate-y-0.5
+           focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2;
+  }
+
+  .btn-navy {
+    @apply inline-flex items-center justify-center gap-2
+           px-6 py-3
+           bg-primary text-white
+           font-inter font-semibold text-sm tracking-wide
+           rounded-sm
+           transition-all duration-300
+           hover:bg-primary-500 hover:shadow-navy hover:-translate-y-0.5
+           focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2
+           px-4 py-2
+           text-neutral-600
+           font-inter font-medium text-sm
+           rounded-sm
+           transition-all duration-200
+           hover:text-primary hover:bg-neutral-100;
+  }
+
+  /* Cards */
+  .card-luxury {
+    @apply bg-white rounded-sm shadow-card 
+           transition-all duration-400 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]
+           hover:shadow-card-hover hover:-translate-y-1;
+  }
+
+  /* Section containers */
+  .section-padding {
+    @apply py-16 md:py-20 lg:py-24;
+  }
+
+  .container-luxury {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Input styles */
+  .input-luxury {
+    @apply w-full px-4 py-3 
+           bg-white border border-neutral-200 
+           rounded-sm
+           font-inter text-sm text-neutral-800 placeholder-neutral-400
+           transition-all duration-200
+           focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/30
+           hover:border-neutral-300;
+  }
+
+  /* Gold star rating */
+  .stars {
+    @apply flex items-center gap-0.5;
+  }
+
+  /* Shimmer skeleton */
+  .skeleton {
+    @apply bg-neutral-200 rounded animate-shimmer;
+    background-size: 200% 100%;
+  }
+
+  /* Section label */
+  .section-label {
+    @apply font-inter text-xs font-bold tracking-[0.2em] uppercase text-accent mb-3;
+  }
+
+  /* Price display */
+  .price-display {
+    @apply font-inter font-bold text-primary;
+  }
+
+  /* Badge */
+  .badge-gold {
+    @apply inline-flex items-center px-2.5 py-0.5 
+           bg-accent/10 text-accent-600 
+           border border-accent/20 
+           rounded-xs text-2xs font-semibold tracking-wide uppercase;
+  }
+
+  .badge-navy {
+    @apply inline-flex items-center px-2.5 py-0.5
+           bg-primary/10 text-primary
+           border border-primary/20
+           rounded-xs text-2xs font-semibold tracking-wide uppercase;
+  }
+
+  /* Overlay gradient text-safe area */
+  .text-on-image {
+    @apply relative z-10 text-white;
+  }
+}
+
+/* ============================================================
+   UTILITY OVERRIDES
+   ============================================================ */
+@layer utilities {
+
+  /* Text gradient gold */
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #C9A84C 0%, #E8D48A 50%, #C9A84C 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Backdrop blur fallback */
+  .backdrop-blur-luxury {
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+  }
+
+  /* Aspect ratio utilities */
+  .aspect-hotel-card {
+    aspect-ratio: 4 / 3;
+  }
+
+  .aspect-gallery {
+    aspect-ratio: 16 / 9;
+  }
+
+  /* Line clamp */
+  .line-clamp-1 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1; }
+  .line-clamp-2 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+  .line-clamp-3 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
+
+  /* Smooth image zoom on hover */
+  .img-zoom-parent {
+    overflow: hidden;
+  }
+  .img-zoom {
+    transition: transform 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .img-zoom-parent:hover .img-zoom {
+    transform: scale(1.06);
+  }
+
+  /* Stagger delays for animations */
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+  .delay-600 { animation-delay: 600ms; }
+  .delay-700 { animation-delay: 700ms; }
+  .delay-800 { animation-delay: 800ms; }
+
+  /* Hidden by default, shown by animation */
+  .animate-on-load {
+    opacity: 0;
+    animation-fill-mode: forwards;
+  }
+}
+
+/* ============================================================
+   HERO SPECIFIC
+   ============================================================ */
+.hero-section {
+  position: relative;
+  min-height: 100svh;
+  background-color: var(--color-primary);
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(27, 42, 74, 0.2) 0%,
+    rgba(27, 42, 74, 0.5) 40%,
+    rgba(27, 42, 74, 0.85) 100%
+  );
+  z-index: 1;
+}
+
+/* Decorative gold dots pattern */
+.gold-dots-pattern {
+  background-image: radial-gradient(circle, rgba(201,168,76,0.15) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* ============================================================
+   DATE INPUT STYLING
+   ============================================================ */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.5) sepia(1) saturate(2) hue-rotate(5deg);
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+
+/* ============================================================
+   PRINT STYLES
+   ============================================================ */
+@media print {
+  .no-print { display: none !important; }
+  body { background: white; color: black; }
+}
