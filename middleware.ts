@@ -151,7 +151,7 @@ export async function middleware(request: NextRequest): Promise<NextResponse> {
 
   // superadmin bypasses all role checks
   if (payload.role === 'superadmin') {
-    return attachPayloadHeaders(NextResponse.next(), payload)
+    return attachPayloadHeaders(request, payload)
   }
 
   // Role-based access denial
@@ -181,7 +181,7 @@ export async function middleware(request: NextRequest): Promise<NextResponse> {
     return NextResponse.redirect(new URL('/admin/dashboard', request.url))
   }
 
-  return attachPayloadHeaders(NextResponse.next(), payload)
+  return attachPayloadHeaders(request, payload)
 }
 
 // ─── Forward staff identity to route handlers via headers ─────────────────────
