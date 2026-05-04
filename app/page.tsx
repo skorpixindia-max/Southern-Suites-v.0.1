@@ -10,7 +10,7 @@ import LoadingSkeleton from '@/components/ui/LoadingSkeleton'
 // ─── Data Fetching ────────────────────────────────────────────────────────────
 
 async function getHotels() {
-  const supabase = createServerClient()
+  const supabase = await createClient()
   const { data, error } = await supabase
     .from('hotels')
     .select(`
@@ -37,7 +37,7 @@ async function getHotels() {
 }
 
 async function getCities() {
-  const supabase = createServerClient()
+  const supabase = await createClient()
   const { data } = await supabase
     .from('hotels')
     .select('city')
@@ -50,7 +50,7 @@ async function getCities() {
 }
 
 async function getFeaturedReviews() {
-  const supabase = createServerClient()
+  const supabase = await createClient()
   const { data } = await supabase
     .from('reviews')
     .select('id, hotel_id, reviewer_name, reviewer_photo, rating, review_text, review_date')
