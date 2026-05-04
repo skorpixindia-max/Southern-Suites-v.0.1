@@ -187,18 +187,17 @@ export async function middleware(request: NextRequest): Promise<NextResponse> {
 // ─── Forward staff identity to route handlers via headers ─────────────────────
 
 function attachPayloadHeaders(
-  response: NextResponse,
+  request: NextRequest,
   payload: StaffJWTPayload
 ): NextResponse {
-  const req = response  // we clone below
-  const headers = new Headers(response.headers)
-  headers.set('x-staff-id', payload.sub ?? '')
-  headers.set('x-staff-role', payload.role)
-  headers.set('x-staff-name', payload.name)
-  headers.set('x-staff-hotel-id', payload.hotel_id ?? '')
+  const requestHeaders = new Headers(request.headers)
+  requestHeaders.set('x-staff-id', payload.sub ?? '')
+  requestHeaders.set('x-staff-role', payload.role)
+  requestHeaders.set('x-staff-name', payload.name)
+  requestHeaders.set('x-staff-hotel-id', payload.hotel_id ?? '')
 
   return NextResponse.next({
-    request: { headers },
+    request: { headers: requestHeaders },
   })
 }
 
