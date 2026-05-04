@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { createServerClient } from '@/lib/supabase/server'
+import { createClient } from '@/lib/supabase/server'
 import SearchBar from '@/components/hotel/SearchBar'
 import HotelCard from '@/components/hotel/HotelCard'
 import GoogleReviews from '@/components/hotel/GoogleReviews'
