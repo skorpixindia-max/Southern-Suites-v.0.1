@@ -1,6 +1,6 @@
 // app/api/admin/analytics/route.ts
 import { NextRequest, NextResponse } from 'next/server'
-import { createSupabaseServiceClient } from '@/lib/supabase/service'
+import { adminClient } from '@/lib/supabase/admin'
 import { requireAdminSession } from '@/lib/auth/session'
 
 // ─── GET /api/admin/analytics ─────────────────────────────────────────────────
