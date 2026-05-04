@@ -86,7 +86,7 @@ export default function SearchBar({
       onKeyDown={handleKeyDown}
     >
       {/* Divider utility */}
-      const divider = <div className="hidden md:block w-px bg-neutral-200 self-stretch my-1" aria-hidden="true" />
+  
 
       {/* ── City ── */}
       <div className="flex-1 flex flex-col justify-center px-4 py-3 md:py-2 group">
