@@ -247,6 +247,4 @@ export async function POST(req: NextRequest) {
 }
 
 // Disable body parsing — we need raw bytes for signature verification
-export const config = {
-  api: { bodyParser: false },
-}
+export const runtime = 'nodejs'
