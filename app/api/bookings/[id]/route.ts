@@ -2,7 +2,7 @@
 // GET a single booking with full details. Accessible by guest (by ref) or staff.
 
 import { NextRequest, NextResponse } from 'next/server'
-import { createSupabaseServiceClient } from '@/lib/supabase/service'
+import { createSupabaseServiceClient } from '@/lib/supabase/admin'
 import { requireAdminSession } from '@/lib/auth/session'
 
 interface RouteContext {
