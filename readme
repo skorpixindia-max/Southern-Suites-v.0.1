@@ -1,0 +1,759 @@
+# SOUTHERN SUITES — COMPLETE 8 ACCOUNT BUILD GUIDE
+
+## GITHUB REPO
+https://github.com/skorpixindia-max/Southern-Suites-v.0.1
+
+## SCHEMA RAW LINK
+https://raw.githubusercontent.com/skorpixindia-max/Southern-Suites-v.0.1/refs/heads/main/schema.sql
+
+## BASE RAW URL
+https://raw.githubusercontent.com/skorpixindia-max/Southern-Suites-v.0.1/refs/heads/main/
+
+---
+
+## MASTER CONTEXT — PASTE THIS AT START OF EVERY SESSION
+
+```
+PROJECT: Southern Suites Hotel Booking SaaS
+9 hotels across Andhra Pradesh, India
+Stack: Next.js 14 App Router, Supabase, Tailwind CSS, TypeScript strict, Razorpay, Resend
+Design: Navy #1B2A4A + Gold #C9A84C. Fonts: Playfair Display + Inter
+Mobile first. MNC level. Jaw dropping UI. No hardcoding. No demo payment.
+Auth check on every API route. Soft delete everywhere. INR currency. Indian phone format.
+
+Schema: https://raw.githubusercontent.com/skorpixindia-max/Southern-Suites-v.0.1/refs/heads/main/schema.sql
+
+ALREADY DONE BY ACCOUNT 1:
+✅ schema.sql
+✅ types/database.ts
+✅ lib/supabase/client.ts
+✅ lib/supabase/server.ts
+✅ lib/supabase/admin.ts
+✅ lib/db/hotels.ts
+✅ lib/db/rooms.ts
+✅ lib/db/availability.ts
+✅ lib/db/bookings.ts
+✅ lib/db/guests.ts
+```
+
+---
+
+## PROGRESS TRACKER — UPDATE AS YOU GO
+
+```
+ACCOUNT 1 ✅ DONE — reuse after reset
+  ✅ schema.sql
+  ✅ types/database.ts
+  ✅ lib/supabase/client.ts
+  ✅ lib/supabase/server.ts
+  ✅ lib/supabase/admin.ts
+  ✅ lib/db/hotels.ts
+  ✅ lib/db/rooms.ts
+  ✅ lib/db/availability.ts
+  ✅ lib/db/bookings.ts
+  ✅ lib/db/guests.ts
+
+ACCOUNT 2 — CONTINUE DB + SECURITY
+  ⬜ lib/db/analytics.ts
+  ⬜ lib/db/reviews.ts
+  ⬜ lib/db/staff.ts
+  ⬜ lib/db/audit.ts
+  ⬜ lib/db/loyalty.ts
+  ⬜ lib/db/offers.ts
+  ⬜ lib/db/housekeeping.ts
+  ⬜ lib/db/maintenance.ts
+  ⬜ lib/db/blog.ts
+  ⬜ lib/auth/jwt.ts
+  ⬜ lib/auth/password.ts
+  ⬜ lib/auth/session.ts
+  ⬜ middleware.ts
+
+ACCOUNT 3 — ADMIN AUTH + HOTEL APIs
+  ⬜ app/api/admin/login/route.ts
+  ⬜ app/api/admin/logout/route.ts
+  ⬜ app/api/admin/hotels/get-all/route.ts
+  ⬜ app/api/admin/hotels/create/route.ts
+  ⬜ app/api/admin/hotels/update/route.ts
+  ⬜ app/api/admin/hotels/delete/route.ts
+  ⬜ app/api/admin/hotels/upload-image/route.ts
+  ⬜ app/api/admin/hotels/delete-image/route.ts
+  ⬜ app/api/admin/rooms/create/route.ts
+  ⬜ app/api/admin/rooms/update/route.ts
+  ⬜ app/api/admin/rooms/delete/route.ts
+  ⬜ app/api/admin/rooms/get-inventory/route.ts
+  ⬜ app/api/admin/rooms/update-inventory/route.ts
+
+ACCOUNT 4 — BOOKING + PAYMENT APIs
+  ⬜ app/api/bookings/create/route.ts
+  ⬜ app/api/bookings/cancel/route.ts
+  ⬜ app/api/bookings/availability/route.ts
+  ⬜ app/api/bookings/check-availability/route.ts
+  ⬜ app/api/bookings/[id]/route.ts
+  ⬜ app/api/payment/create-order/route.ts
+  ⬜ app/api/payment/refund/route.ts
+  ⬜ app/api/webhooks/razorpay/route.ts
+  ⬜ lib/payments/razorpay.ts
+  ⬜ lib/payments/refund.ts
+  ⬜ lib/payments/webhook.ts
+  ⬜ lib/validations/booking.ts
+  ⬜ lib/validations/hotel.ts
+
+ACCOUNT 5 — REMAINING ADMIN APIs + NOTIFICATIONS
+  ⬜ app/api/admin/bookings/route.ts
+  ⬜ app/api/admin/guests/route.ts
+  ⬜ app/api/admin/managers/route.ts
+  ⬜ app/api/admin/analytics/route.ts
+  ⬜ app/api/admin/settings/route.ts
+  ⬜ app/api/admin/pricing/route.ts
+  ⬜ app/api/admin/offers/route.ts
+  ⬜ app/api/admin/housekeeping/route.ts
+  ⬜ app/api/admin/reviews/route.ts
+  ⬜ lib/notifications/email.ts
+  ⬜ lib/notifications/whatsapp.ts
+  ⬜ lib/notifications/dispatcher.ts
+  ⬜ lib/google/places.ts
+  ⬜ lib/invoice/gst.ts
+  ⬜ lib/invoice/pdf.ts
+  ⬜ lib/audit.ts
+  ⬜ lib/utils.ts
+
+ACCOUNT 6 — CUSTOMER FRONTEND
+  ⬜ app/layout.tsx
+  ⬜ app/page.tsx
+  ⬜ app/not-found.tsx
+  ⬜ app/error.tsx
+  ⬜ app/loading.tsx
+  ⬜ app/hotels/page.tsx
+  ⬜ app/hotels/[slug]/page.tsx
+  ⬜ app/cities/[city]/page.tsx
+  ⬜ app/about/page.tsx
+  ⬜ app/contact/page.tsx
+  ⬜ app/privacy-policy/page.tsx
+  ⬜ app/terms/page.tsx
+  ⬜ app/cancellation-policy/page.tsx
+  ⬜ components/ui/Navbar.tsx
+  ⬜ components/ui/Footer.tsx
+  ⬜ components/ui/LoadingSkeleton.tsx
+  ⬜ components/ui/ErrorBoundary.tsx
+  ⬜ components/ui/Modal.tsx
+  ⬜ components/hotel/HotelCard.tsx
+  ⬜ components/hotel/HotelGallery.tsx
+  ⬜ components/hotel/HotelMap.tsx
+  ⬜ components/hotel/SearchBar.tsx
+  ⬜ components/hotel/GoogleReviews.tsx
+  ⬜ components/hotel/AmenitiesList.tsx
+  ⬜ components/hotel/PriceBadge.tsx
+
+ACCOUNT 7 — BOOKING FLOW COMPONENTS
+  ⬜ app/booking/[slug]/page.tsx
+  ⬜ app/confirmation/[id]/page.tsx
+  ⬜ components/hotel/RoomCard.tsx
+  ⬜ components/hotel/HotelSidebar.tsx
+  ⬜ components/hotel/BookNowPopup.tsx
+  ⬜ components/booking/BookingForm.tsx
+  ⬜ components/booking/BookingSteps.tsx
+  ⬜ components/booking/DatePicker.tsx
+  ⬜ components/booking/GuestCounter.tsx
+  ⬜ components/booking/PriceSummary.tsx
+  ⬜ components/booking/CouponInput.tsx
+  ⬜ components/booking/AvailabilityBadge.tsx
+  ⬜ components/booking/ConfirmationClient.tsx
+  ⬜ components/booking/GSTInvoice.tsx
+
+ACCOUNT 8 — ADMIN PANEL
+  ⬜ app/admin/layout.tsx
+  ⬜ app/admin/login/page.tsx
+  ⬜ app/admin/dashboard/page.tsx
+  ⬜ app/admin/hotels/page.tsx
+  ⬜ app/admin/rooms/page.tsx
+  ⬜ app/admin/bookings/page.tsx
+  ⬜ app/admin/guests/page.tsx
+  ⬜ app/admin/inventory/page.tsx
+  ⬜ app/admin/pricing/page.tsx
+  ⬜ app/admin/analytics/page.tsx
+  ⬜ app/admin/settings/page.tsx
+  ⬜ app/admin/managers/page.tsx
+  ⬜ components/admin/AdminSidebar.tsx
+  ⬜ components/admin/HotelEditor.tsx
+  ⬜ components/admin/RoomEditor.tsx
+  ⬜ components/admin/BookingTable.tsx
+  ⬜ components/admin/RevenueChart.tsx
+  ⬜ components/admin/OccupancyCard.tsx
+  ⬜ components/admin/InventoryManager.tsx
+  ⬜ components/admin/GuestProfileCard.tsx
+  ⬜ components/admin/QuickStats.tsx
+```
+
+---
+
+## ACCOUNT 2 — COPY PASTE PROMPT
+
+```
+PROJECT: Southern Suites Hotel Booking SaaS
+9 hotels across Andhra Pradesh, India
+Stack: Next.js 14 App Router, Supabase, Tailwind CSS, TypeScript strict, Razorpay, Resend
+Design: Navy #1B2A4A + Gold #C9A84C. Fonts: Playfair Display + Inter
+Mobile first. MNC level. No hardcoding. No demo payment.
+Auth check on every API route. Soft delete everywhere. INR currency.
+
+Schema: https://raw.githubusercontent.com/skorpixindia-max/Southern-Suites-v.0.1/refs/heads/main/schema.sql
+
+Already done: schema.sql, types/database.ts, lib/supabase/, lib/db/hotels.ts, rooms.ts, availability.ts, bookings.ts, guests.ts
+
+YOUR SESSION 1 TASK:
+Write remaining lib/db/ files one by one. Complete production code. Typed. No any types.
+Files: analytics.ts, reviews.ts, staff.ts, audit.ts, loyalty.ts, offers.ts, housekeeping.ts, maintenance.ts, blog.ts
+
+YOUR SESSION 2 TASK:
+Write security layer:
+lib/auth/jwt.ts — sign and verify JWT tokens using jose library
+lib/auth/password.ts — bcrypt hash and compare passwords
+lib/auth/session.ts — set and clear httpOnly cookie
+middleware.ts — protect /admin/* pages and /api/admin/* routes
+JWT verify on every protected route. Role check: superadmin sees all, manager sees only their hotel_id.
+
+Start Session 1 now. One file at a time. Show complete code for each.
+```
+
+---
+
+## ACCOUNT 3 — COPY PASTE PROMPT
+
+```
+PROJECT: Southern Suites Hotel Booking SaaS
+9 hotels across Andhra Pradesh, India
+Stack: Next.js 14 App Router, Supabase, Tailwind CSS, TypeScript strict, Razorpay, Resend
+Design: Navy #1B2A4A + Gold #C9A84C
+Mobile first. MNC level. No hardcoding. Auth on every admin API. INR currency.
+
+Schema: https://raw.githubusercontent.com/skorpixindia-max/Southern-Suites-v.0.1/refs/heads/main/schema.sql
+
+Already done: schema.sql, lib/supabase/, lib/db/, lib/auth/, middleware.ts
+
+YOUR SESSION 1 TASK:
+Write admin auth API routes:
+app/api/admin/login/route.ts — bcrypt verify, JWT sign, set httpOnly cookie, log to audit_log
+app/api/admin/logout/route.ts — clear cookie, log to audit_log
+
+YOUR SESSION 2 TASK:
+Write hotel management API routes. Auth protected. Validated. Soft delete.
+app/api/admin/hotels/get-all/route.ts
+app/api/admin/hotels/create/route.ts
+app/api/admin/hotels/update/route.ts — includes map_embed_code and tour_embed_code fields
+app/api/admin/hotels/delete/route.ts — soft delete only
+app/api/admin/hotels/upload-image/route.ts — Supabase Storage
+app/api/admin/hotels/delete-image/route.ts
+
+YOUR SESSION 3 TASK:
+Write room management API routes:
+app/api/admin/rooms/create/route.ts
+app/api/admin/rooms/update/route.ts
+app/api/admin/rooms/delete/route.ts
+app/api/admin/rooms/get-inventory/route.ts
+app/api/admin/rooms/update-inventory/route.ts
+app/api/admin/rooms/upload-image/route.ts
+
+Start Session 1 now.
+```
+
+---
+
+## ACCOUNT 4 — COPY PASTE PROMPT
+
+```
+PROJECT: Southern Suites Hotel Booking SaaS
+9 hotels across Andhra Pradesh, India
+Stack: Next.js 14 App Router, Supabase, Tailwind CSS, TypeScript strict, Razorpay, Resend
+Mobile first. MNC level. No hardcoding. No demo payment. INR currency.
+
+Schema: https://raw.githubusercontent.com/skorpixindia-max/Southern-Suites-v.0.1/refs/heads/main/schema.sql
+
+YOUR SESSION 1 TASK:
+Write booking API routes. Prevent double booking. Server validates amount never client.
+app/api/bookings/create/route.ts — check availability first, create guest if new, create booking, decrement availability
+app/api/bookings/cancel/route.ts — update status, trigger refund if paid
+app/api/bookings/availability/route.ts — return available dates for calendar
+app/api/bookings/check-availability/route.ts — check specific dates before booking
+app/api/bookings/[id]/route.ts — get single booking details
+
+YOUR SESSION 2 TASK:
+Write payment files. Amount calculated server side never trusted from client.
+app/api/payment/create-order/route.ts — get price from DB, create Razorpay order
+app/api/payment/refund/route.ts — initiate Razorpay refund
+app/api/webhooks/razorpay/route.ts — verify signature, confirm booking, trigger notifications
+lib/payments/razorpay.ts — createOrder, verifySignature functions
+lib/payments/refund.ts — processRefund function
+lib/payments/webhook.ts — handleWebhook function
+
+YOUR SESSION 3 TASK:
+Write validation files using zod:
+lib/validations/booking.ts
+lib/validations/hotel.ts
+lib/validations/guest.ts
+lib/validations/payment.ts
+
+Start Session 1 now.
+```
+
+---
+
+## ACCOUNT 5 — COPY PASTE PROMPT
+
+```
+PROJECT: Southern Suites Hotel Booking SaaS
+9 hotels across Andhra Pradesh, India
+Stack: Next.js 14 App Router, Supabase, Tailwind CSS, TypeScript strict, Razorpay, Resend
+Mobile first. MNC level. INR currency. Indian market.
+
+Schema: https://raw.githubusercontent.com/skorpixindia-max/Southern-Suites-v.0.1/refs/heads/main/schema.sql
+
+YOUR SESSION 1 TASK:
+Write remaining admin API routes. Auth protected.
+app/api/admin/bookings/route.ts — list with filters, pagination, search
+app/api/admin/guests/route.ts — guest profiles CRUD
+app/api/admin/managers/route.ts — staff management
+app/api/admin/analytics/route.ts — revenue, occupancy, RevPAR stats
+app/api/admin/settings/route.ts — get and update settings
+app/api/admin/pricing/route.ts — pricing rules CRUD
+app/api/admin/offers/route.ts — coupon management
+app/api/admin/housekeeping/route.ts — room status updates
+app/api/admin/reviews/route.ts — fetch and cache Google reviews
+
+YOUR SESSION 2 TASK:
+Write notification and integration files:
+lib/notifications/email.ts — Resend booking confirmation, cancellation, reminder emails with HTML templates
+lib/notifications/whatsapp.ts — wa.me link generator + WhatsApp Business API template messages
+lib/notifications/dispatcher.ts — decides email vs whatsapp vs both
+lib/google/places.ts — fetch live reviews and rating using Place ID
+lib/invoice/gst.ts — calculate GST 12% below 2500, 18% above 2500
+lib/invoice/pdf.ts — generate PDF invoice
+lib/audit.ts — log every admin action to audit_log table
+lib/utils.ts — formatCurrency, formatDate, calculateNights, generateBookingId
+
+Start Session 1 now.
+```
+
+---
+
+## ACCOUNT 6 — COPY PASTE PROMPT
+
+```
+PROJECT: Southern Suites Hotel Booking SaaS
+9 hotels across Andhra Pradesh, India
+Stack: Next.js 14 App Router, Supabase, Tailwind CSS, TypeScript strict
+Design system: Primary Navy #1B2A4A, Accent Gold #C9A84C, Background White #FFFFFF, Section Gray #F8F7F4
+Fonts: Playfair Display for headings, Inter for body — both from Google Fonts
+Mobile first. Jaw dropping luxury feel. Like Marriott meets MakeMyTrip but better.
+No hardcoding. Everything fetched from Supabase.
+
+Schema: https://raw.githubusercontent.com/skorpixindia-max/Southern-Suites-v.0.1/refs/heads/main/schema.sql
+
+YOUR SESSION 1 TASK:
+Write app layout and homepage:
+app/layout.tsx — imports Playfair Display + Inter, metadata, global structure
+app/page.tsx — jaw dropping homepage:
+  Full screen hero with hotel background video or image
+  Centered search bar — city dropdown + check-in + check-out + guests + search button
+  Section: 9 hotel cards with live Google rating stars
+  Section: Why book direct — saves vs MakeMyTrip badge
+  Section: Cities we are in — Vijayawada, Vizag, Tirupati, Guntur, Nellore, Kurnool, Kakinada, Rajahmundry, Kadapa
+  Section: Guest reviews carousel
+  Fast loading. Skeleton while loading.
+app/not-found.tsx
+app/error.tsx
+app/loading.tsx
+
+YOUR SESSION 2 TASK:
+Write hotel pages:
+app/hotels/page.tsx — all 9 properties with city filter and price sort
+app/hotels/[slug]/page.tsx:
+  Full screen photo gallery
+  If tour_embed_code exists show 360 Tour tab — if empty tab disappears silently
+  If map_embed_code exists show map — if empty map section disappears silently
+  Live Google reviews using google_place_id
+  Room cards with prices and availability
+  Book Now sticky sidebar
+  Policies accordion
+app/cities/[city]/page.tsx — hotels in specific city for SEO
+app/about/page.tsx
+app/contact/page.tsx
+app/privacy-policy/page.tsx
+app/terms/page.tsx
+app/cancellation-policy/page.tsx
+
+YOUR SESSION 3 TASK:
+Write common UI components:
+components/ui/Navbar.tsx — logo left, nav links, Book Now button right, mobile hamburger
+components/ui/Footer.tsx — all hotels listed, legal links, dynamic copyright year
+components/ui/LoadingSkeleton.tsx
+components/ui/ErrorBoundary.tsx
+components/hotel/HotelCard.tsx — image, name, city, star rating, price from, book now button
+components/hotel/HotelGallery.tsx — fullscreen lightbox gallery
+components/hotel/HotelMap.tsx — renders map_embed_code iframe, empty returns null
+components/hotel/SearchBar.tsx — city + dates + guests filter
+components/hotel/GoogleReviews.tsx — shows reviews from reviews table
+components/hotel/AmenitiesList.tsx — icons for WiFi, AC, Pool etc
+components/hotel/PriceBadge.tsx — cheaper than MMT badge
+
+Start Session 1 now.
+```
+
+---
+
+## ACCOUNT 7 — COPY PASTE PROMPT
+
+```
+PROJECT: Southern Suites Hotel Booking SaaS
+9 hotels across Andhra Pradesh, India
+Stack: Next.js 14 App Router, Supabase, Tailwind CSS, TypeScript strict, Razorpay
+Design: Navy #1B2A4A + Gold #C9A84C. Playfair Display + Inter.
+Mobile first. 3 step booking only. Fast. Simple. No confusion.
+
+Schema: https://raw.githubusercontent.com/skorpixindia-max/Southern-Suites-v.0.1/refs/heads/main/schema.sql
+
+YOUR SESSION 1 TASK:
+Write booking pages:
+app/booking/[slug]/page.tsx — shows selected room details + booking form
+app/confirmation/[id]/page.tsx — booking confirmed screen
+
+Write room components:
+components/hotel/RoomCard.tsx:
+  Room image, name, size, bed type, amenities
+  Price per night with original striked through
+  Only N rooms left badge in red if less than 3
+  Sold out state if 0 available
+  Book Now button
+components/hotel/HotelSidebar.tsx — sticky sidebar with dates, price, book now
+components/hotel/BookNowPopup.tsx — mobile bottom sheet quick booking
+
+YOUR SESSION 2 TASK:
+Write booking flow components:
+components/booking/BookingSteps.tsx — step 1 details, step 2 payment, step 3 confirmed
+components/booking/BookingForm.tsx:
+  Step 1: Name, phone, email, special requests
+  Step 2: Price summary + Razorpay payment button
+  Amount comes from server never from client
+  No demo payment mode
+components/booking/DatePicker.tsx — calendar with blocked dates shown in red
+components/booking/GuestCounter.tsx — adults and children counter
+components/booking/PriceSummary.tsx — room price, GST breakdown, total
+components/booking/CouponInput.tsx — enter coupon code, shows discount
+components/booking/AvailabilityBadge.tsx — Only 2 rooms left for these dates
+
+YOUR SESSION 3 TASK:
+Write confirmation components:
+components/booking/ConfirmationClient.tsx:
+  Booking reference SS-2025-XXXXX
+  Hotel name, room, dates, amount paid
+  QR code for checkin
+  Download GST invoice button
+  Add to Google Calendar button
+  Share on WhatsApp button
+components/booking/GSTInvoice.tsx — printable GST invoice with all tax details
+
+Start Session 1 now.
+```
+
+---
+
+## ACCOUNT 8 — COPY PASTE PROMPT
+
+```
+PROJECT: Southern Suites Hotel Booking SaaS
+9 hotels across Andhra Pradesh, India
+Stack: Next.js 14 App Router, Supabase, Tailwind CSS, TypeScript strict
+Design: Navy #1B2A4A + Gold #C9A84C. Admin panel clean and professional.
+Mobile first. Owner checks on phone. Zero training needed. Self explanatory.
+
+Schema: https://raw.githubusercontent.com/skorpixindia-max/Southern-Suites-v.0.1/refs/heads/main/schema.sql
+
+YOUR SESSION 1 TASK:
+Write admin layout and dashboard:
+app/admin/layout.tsx — sidebar layout, auth check
+app/admin/login/page.tsx — clean login, email + password
+app/admin/dashboard/page.tsx:
+  Today revenue in big number
+  Today new bookings count
+  Checkins today list
+  Checkouts today list
+  Low inventory alerts — rooms below 2 available
+  All 9 properties occupancy quick view
+  Works perfectly on mobile phone
+components/admin/AdminSidebar.tsx — left nav, active states, all menu items
+components/admin/QuickStats.tsx — revenue, bookings, occupancy cards
+
+YOUR SESSION 2 TASK:
+Write hotel and room management:
+app/admin/hotels/page.tsx — list all properties, add new, edit each
+components/admin/HotelEditor.tsx — full edit form:
+  name, address, phone, email, whatsapp
+  description text area
+  map_embed_code — label says "Paste Google Maps iframe code here"
+  tour_embed_code — label says "Paste 360 Tour iframe code here. Leave empty if not available."
+  google_place_id — for live reviews
+  star_rating, check_in_time, check_out_time
+  gst_number
+  logo upload
+  is_active toggle — show or hide on website
+  Save button
+app/admin/rooms/page.tsx — list rooms per hotel
+components/admin/RoomEditor.tsx:
+  name, room_type, base_price, weekend_price, peak_price
+  max_occupancy, total_count, size_sqft, bed_type
+  amenities checkboxes
+  description
+  image upload
+  is_active toggle
+
+YOUR SESSION 3 TASK:
+Write booking management and analytics:
+app/admin/bookings/page.tsx — all bookings filterable
+components/admin/BookingTable.tsx — filter by hotel, date, status. Search by name, phone. Confirm, cancel actions.
+app/admin/guests/page.tsx
+components/admin/GuestProfileCard.tsx
+app/admin/analytics/page.tsx
+components/admin/RevenueChart.tsx — monthly revenue bar chart
+components/admin/OccupancyCard.tsx — per property occupancy percentage
+app/admin/inventory/page.tsx
+components/admin/InventoryManager.tsx — rooms available per date per hotel
+app/admin/pricing/page.tsx — pricing rules
+app/admin/settings/page.tsx:
+  Logo upload
+  Site name, tagline
+  Support phone, email
+  GST number
+  Razorpay keys
+  WhatsApp number
+  Notification preferences
+app/admin/managers/page.tsx — add remove property managers
+
+Start Session 1 now.
+```
+
+---
+
+## WHAT YOU DO AFTER EACH FILE
+
+```
+1. Claude gives you complete file code
+2. Go to github.com/skorpixindia-max/Southern-Suites-v.0.1
+3. Click Add file → Create new file
+4. Type exact file path example: lib/auth/jwt.ts
+5. Paste the code
+6. Click Commit new file
+7. Mark ✅ in progress tracker above
+8. Continue to next file in same session
+```
+
+---
+
+## ENV VARIABLES — CREATE THIS FILE IN REPO
+
+Filename: .env.example
+```
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+SUPABASE_SERVICE_ROLE_KEY=
+RAZORPAY_KEY_ID=
+RAZORPAY_KEY_SECRET=
+NEXT_PUBLIC_RAZORPAY_KEY_ID=
+RESEND_API_KEY=
+GOOGLE_PLACES_API_KEY=
+JWT_SECRET=minimum-32-characters-random-string
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+```
+
+---
+
+## SUPABASE — RUN SCHEMA
+
+```
+1. Go to supabase.com
+2. Open your project
+3. Click SQL Editor
+4. Click New Query
+5. Go to github.com/skorpixindia-max/Southern-Suites-v.0.1
+6. Open schema.sql
+7. Click Raw
+8. Copy all the SQL
+9. Paste in Supabase SQL Editor
+10. Click Run
+11. Should show Success
+```
+
+---
+
+## FINAL FOLDER STRUCTURE WHEN COMPLETE
+
+```
+southern-suites/
+├── .env.example
+├── middleware.ts
+├── next.config.js
+├── tailwind.config.js
+├── package.json
+├── tsconfig.json
+├── schema.sql
+│
+├── types/
+│   └── database.ts
+│
+├── lib/
+│   ├── utils.ts
+│   ├── audit.ts
+│   ├── supabase/
+│   │   ├── client.ts
+│   │   ├── server.ts
+│   │   └── admin.ts
+│   ├── db/
+│   │   ├── hotels.ts
+│   │   ├── rooms.ts
+│   │   ├── bookings.ts
+│   │   ├── availability.ts
+│   │   ├── guests.ts
+│   │   ├── analytics.ts
+│   │   ├── reviews.ts
+│   │   ├── staff.ts
+│   │   ├── audit.ts
+│   │   ├── loyalty.ts
+│   │   ├── offers.ts
+│   │   ├── housekeeping.ts
+│   │   ├── maintenance.ts
+│   │   └── blog.ts
+│   ├── auth/
+│   │   ├── jwt.ts
+│   │   ├── password.ts
+│   │   └── session.ts
+│   ├── payments/
+│   │   ├── razorpay.ts
+│   │   ├── refund.ts
+│   │   └── webhook.ts
+│   ├── notifications/
+│   │   ├── email.ts
+│   │   ├── whatsapp.ts
+│   │   └── dispatcher.ts
+│   ├── google/
+│   │   └── places.ts
+│   ├── invoice/
+│   │   ├── gst.ts
+│   │   └── pdf.ts
+│   └── validations/
+│       ├── booking.ts
+│       ├── hotel.ts
+│       ├── guest.ts
+│       └── payment.ts
+│
+├── app/
+│   ├── layout.tsx
+│   ├── page.tsx
+│   ├── not-found.tsx
+│   ├── error.tsx
+│   ├── loading.tsx
+│   ├── sitemap.ts
+│   ├── robots.ts
+│   ├── hotels/
+│   │   ├── page.tsx
+│   │   └── [slug]/page.tsx
+│   ├── booking/
+│   │   └── [slug]/page.tsx
+│   ├── confirmation/
+│   │   └── [id]/page.tsx
+│   ├── cities/
+│   │   └── [city]/page.tsx
+│   ├── about/page.tsx
+│   ├── contact/page.tsx
+│   ├── privacy-policy/page.tsx
+│   ├── terms/page.tsx
+│   ├── cancellation-policy/page.tsx
+│   ├── admin/
+│   │   ├── layout.tsx
+│   │   ├── login/page.tsx
+│   │   ├── dashboard/page.tsx
+│   │   ├── hotels/page.tsx
+│   │   ├── rooms/page.tsx
+│   │   ├── bookings/page.tsx
+│   │   ├── guests/page.tsx
+│   │   ├── inventory/page.tsx
+│   │   ├── pricing/page.tsx
+│   │   ├── analytics/page.tsx
+│   │   ├── settings/page.tsx
+│   │   └── managers/page.tsx
+│   └── api/
+│       ├── admin/
+│       │   ├── login/route.ts
+│       │   ├── logout/route.ts
+│       │   ├── hotels/
+│       │   │   ├── get-all/route.ts
+│       │   │   ├── create/route.ts
+│       │   │   ├── update/route.ts
+│       │   │   ├── delete/route.ts
+│       │   │   ├── upload-image/route.ts
+│       │   │   └── delete-image/route.ts
+│       │   ├── rooms/
+│       │   │   ├── create/route.ts
+│       │   │   ├── update/route.ts
+│       │   │   ├── delete/route.ts
+│       │   │   ├── get-inventory/route.ts
+│       │   │   ├── update-inventory/route.ts
+│       │   │   └── upload-image/route.ts
+│       │   ├── bookings/route.ts
+│       │   ├── guests/route.ts
+│       │   ├── managers/route.ts
+│       │   ├── analytics/route.ts
+│       │   ├── settings/route.ts
+│       │   ├── pricing/route.ts
+│       │   ├── offers/route.ts
+│       │   ├── housekeeping/route.ts
+│       │   └── reviews/route.ts
+│       ├── bookings/
+│       │   ├── create/route.ts
+│       │   ├── cancel/route.ts
+│       │   ├── availability/route.ts
+│       │   ├── check-availability/route.ts
+│       │   └── [id]/route.ts
+│       ├── payment/
+│       │   ├── create-order/route.ts
+│       │   └── refund/route.ts
+│       └── webhooks/
+│           └── razorpay/route.ts
+│
+└── components/
+    ├── ui/
+    │   ├── Navbar.tsx
+    │   ├── Footer.tsx
+    │   ├── LoadingSkeleton.tsx
+    │   ├── ErrorBoundary.tsx
+    │   └── Modal.tsx
+    ├── hotel/
+    │   ├── HotelCard.tsx
+    │   ├── HotelGallery.tsx
+    │   ├── HotelMap.tsx
+    │   ├── HotelSidebar.tsx
+    │   ├── RoomCard.tsx
+    │   ├── RoomGallery.tsx
+    │   ├── SearchBar.tsx
+    │   ├── BookNowPopup.tsx
+    │   ├── GoogleReviews.tsx
+    │   ├── AmenitiesList.tsx
+    │   └── PriceBadge.tsx
+    ├── booking/
+    │   ├── BookingForm.tsx
+    │   ├── BookingSteps.tsx
+    │   ├── DatePicker.tsx
+    │   ├── GuestCounter.tsx
+    │   ├── PriceSummary.tsx
+    │   ├── CouponInput.tsx
+    │   ├── AvailabilityBadge.tsx
+    │   ├── ConfirmationClient.tsx
+    │   └── GSTInvoice.tsx
+    └── admin/
+        ├── AdminSidebar.tsx
+        ├── QuickStats.tsx
+        ├── HotelEditor.tsx
+        ├── RoomEditor.tsx
+        ├── BookingTable.tsx
+        ├── RevenueChart.tsx
+        ├── OccupancyCard.tsx
+        ├── InventoryManager.tsx
+        └── GuestProfileCard.tsx
+```
